@@ -1,0 +1,22 @@
+package test;
+
+import java.sql.Date;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import dao.CatDAO;
+import model.Cat;
+import util.HibernateUtil;
+
+public class TestCat {
+	public static void main(String[] args) {
+		CatDAO cat_dao = new CatDAO();
+		Cat cat = new Cat();
+		cat.setId(1);
+		
+		cat_dao.selectById(cat);
+	}
+}

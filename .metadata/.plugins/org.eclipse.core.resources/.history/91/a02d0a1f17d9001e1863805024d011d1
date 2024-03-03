@@ -1,0 +1,24 @@
+package test;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import dao.CatDAO;
+import model.Cat;
+import util.HibernateUtil;
+
+public class TestCat {
+	public static void main(String[] args) {
+		CatDAO cat_dao = new CatDAO();
+		
+//		test selectAll
+		List<Cat> list = cat_dao.selectAll();
+		
+		for(Cat cat: list) {
+			System.out.println(cat);
+		}
+	}
+}

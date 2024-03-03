@@ -1,0 +1,24 @@
+package test;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import util.HibernateUtil;
+
+public class TestCat {
+	public static void main(String[] args) {
+		try {
+			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+			if(sessionFactory != null) {
+				Session session = sessionFactory.openSession();
+				try {
+					
+				} finally {
+					session.close();
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+}

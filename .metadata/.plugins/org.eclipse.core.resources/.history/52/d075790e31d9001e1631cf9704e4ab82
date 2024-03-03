@@ -1,0 +1,37 @@
+package test;
+
+import java.sql.Date;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import dao.CatDAO;
+import model.Cat;
+import util.HibernateUtil;
+
+public class TestCat {
+	public static void main(String[] args) {
+//		transient
+		Cat cat = new Cat();
+		cat.setId(1);
+		
+		try {
+			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+			if(sessionFactory != null) {
+				Session session = sessionFactory.openSession();
+				Transaction tr = session.beginTransaction();
+				
+//				persistent
+				cat = session.get(Cat.class, 1);
+				
+//				detached
+				tr.commit();
+				session.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
